@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>Casino Mini App</title>
+    <style>
+        body { background-color: #0f172a; color: white; font-family: sans-serif; margin: 0; padding: 10px; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .balance { background: #1e293b; padding: 8px 15px; border-radius: 20px; font-weight: bold; color: #fbbf24; }
+        .section-title { font-size: 18px; margin: 20px 0 10px 0; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .game-card { background: #1e293b; border-radius: 12px; overflow: hidden; text-align: center; cursor: pointer; }
+        .game-card:active { transform: scale(0.95); }
+        .game-card img { width: 100%; height: 110px; object-fit: cover; }
+        .game-title { padding: 5px; font-size: 12px; font-weight: bold; }
+        .badge { background: #22c55e; color: white; font-size: 10px; padding: 2px 5px; border-radius: 5px; position: absolute; margin: 5px; }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #0f172a; display: flex; justify-content: space-around; padding: 10px; border-top: 1px solid #1e293b; }
+        .nav-item { text-align: center; font-size: 10px; color: #94a3b8; }
+        .nav-item.active { color: #60a5fa; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div style="font-weight:bold; font-size:18px;">🐻 LUCKY BEAR</div>
+        <div class="balance" id="userBalance">5000 ₽</div>
+    </div>
+    <div class="section-title">🎰 Слоты</div>
+    <div class="grid">
+        <div class="game-card" onclick="playGame('Wild Bandito')">
+            <img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?w=300&h=200&fit=crop">
+            <div class="game-title">WILD BANDITO</div>
+        </div>
+        <div class="game-card" onclick="playGame('3 Coin Peacock')">
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=300&h=200&fit=crop">
+            <div class="game-title">3 COIN PEACOCK</div>
+        </div>
+        <div class="game-card" onclick="playGame('Crown Coins')">
+            <span class="badge">Free</span>
+            <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=300&h=200&fit=crop">
+            <div class="game-title">CROWN COINS</div>
+        </div>
+    </div>
+    <div class="section-title">🚀 Быстрые игры</div>
+    <div class="grid">
+        <div class="game-card" onclick="playGame('Mines')">
+            <img src="https://images.unsplash.com/photo-1614294148960-9aa740632a87?w=300&h=200&fit=crop">
+            <div class="game-title">MINES</div>
+        </div>
+        <div class="game-card" onclick="playGame('Falling Pickaxe')">
+            <img src="https://images.unsplash.com/photo-1580100586938-02822d99c4a8?w=300&h=200&fit=crop">
+            <div class="game-title">FALLING PICKAXE</div>
+        </div>
+        <div class="game-card" onclick="playGame('Crash X')">
+            <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=300&h=200&fit=crop">
+            <div class="game-title">CRASH X</div>
+        </div>
+    </div>
+    <div class="bottom-nav">
+        <div class="nav-item active">🏠<br>Казино</div>
+        <div class="nav-item">⚽<br>Спорт</div>
+        <div class="nav-item">💳<br>Пополнить</div>
+        <div class="nav-item">👥<br>Пригласить</div>
+        <div class="nav-item">🎁<br>Бонусы</div>
+    </div>
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand();
+        function playGame(gameName) {
+            tg.showAlert(`Вы выбрали игру: ${gameName}. Скоро здесь будет игра!`);
+        }
+    </script>
+</body>
+</html>
